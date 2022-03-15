@@ -12,7 +12,7 @@ We can use amazone s3 service to store our backup files. It provides unlimited s
 6. Configure the IAM user and copy the IMG files to S3.
 7. Add rewrite rules on configuration file of apache.
 8. Add bucket policy to the S3 for enabling public Access.
-9. Allow public access
+
 
 Now, let’s get into it!
 
@@ -178,4 +178,7 @@ systemctl restart httpd.service
 
 6.Click "Save changes"
 
+## Now the Web files would be loading from EC2 instance and the images would be from S3 bucket. We can confirm the same by checking url of any image.
+
+![image](https://user-images.githubusercontent.com/100774483/158430970-eb1dfa7f-55f7-4b59-a1fc-dc72b7421811.png)
 
