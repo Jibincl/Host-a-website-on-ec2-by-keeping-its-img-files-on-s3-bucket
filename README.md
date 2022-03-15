@@ -182,3 +182,8 @@ systemctl restart httpd.service
 
 ![image](https://user-images.githubusercontent.com/100774483/158430970-eb1dfa7f-55f7-4b59-a1fc-dc72b7421811.png)
 
+
+# Conclusion
+
+In this tutorial we discussed how to host a static website on EC2 by keeping it's image files on an S3 bucket. The goal is to get you started on using S3 to keep image files of a simple static website as it is cheap and easy to do.
+
