@@ -29,6 +29,7 @@ Now, let’s get into it!
 10.  Select security group for instance, click next.
 11.  Click "launch".
 12.  Select the key file need to use while logging in to the server.
+
   ![image](https://user-images.githubusercontent.com/100774483/158379207-0619b564-9ab7-43f0-a523-794d2f9d9604.png)
 
 ## Step 2 : Install httpd, PHP and insert files to document root
@@ -40,12 +41,19 @@ Now, let’s get into it!
 ## Step 3 : Create S3 bucket
 1. Go to "Amazone S3 console"
 2. Click on "create bucket"
+
  ![image](https://user-images.githubusercontent.com/100774483/158382362-91ae353b-6454-493d-b542-0e1b69a13dfa.png)
+
 3. Choose the "bucket name", "AWS region"
+
  ![image](https://user-images.githubusercontent.com/100774483/158382812-35b58534-4915-4365-96ed-27a2eb8bac6f.png)
+
 4. Untick the "Block all public access" , So that the filec would be publically accessible.
+
  ![image](https://user-images.githubusercontent.com/100774483/158383364-39f2dd02-e8bf-4b39-8e53-3622ae4ede41.png)
+
 5. Provide the tag and create bucket.
+
  ![image](https://user-images.githubusercontent.com/100774483/158383556-60036dd5-0605-439d-8402-94002e3ece83.png)
  ![image](https://user-images.githubusercontent.com/100774483/158383671-974f895c-b442-4021-a540-edb55534db4b.png)
 
@@ -54,7 +62,9 @@ Now, let’s get into it!
 1. Go to "Identity and Access Management (IAM)"
 2. Select "Policys" on left side menu
 3. Click "Create policy"
+
 ![image](https://user-images.githubusercontent.com/100774483/158384740-b9bce9e9-19af-411b-b9c8-9642ce978e69.png)
+
 4.Click "json" and add below policy.
 
 ~~~
@@ -83,14 +93,22 @@ Under resouces, we need to mention the "arn" of the created bucket. So that we w
 
 1. Select "users" from "Identity and Access Management (IAM)"
 2. Click "Add user"
+
 ![image](https://user-images.githubusercontent.com/100774483/158387976-3b863429-0aaf-4b5a-b0d7-b7dd09208f31.png)
+
 3.Provide username and select "Access key - Programmatic access"
+
 ![image](https://user-images.githubusercontent.com/100774483/158388352-7124ce71-8951-4793-b519-0ae5a8458c0c.png)
+
 4. On the next page, assign the created policy for the user.
+
 ![image](https://user-images.githubusercontent.com/100774483/158388667-04cf76fe-c3b0-4298-9f37-3be69c7533ef.png)
+
 5. On next, add tag and create user.
 6. Once the user is created, copy Access key ID and  Secret access key
+
 ![image](https://user-images.githubusercontent.com/100774483/158389197-51736c38-fd89-474b-95c5-9b79b3603338.png)
+
 Now, the user has been created. 
 
 ## Step 6 : Configure the IAM user and copy the IMG files to S3.
@@ -118,6 +136,7 @@ Once all copied, we can confirm by listng the objects in s3 bucket.
 ~~~
 
 Please refer to the screenshot
+
 ![configuring IAM user and copyng image files](https://user-images.githubusercontent.com/100774483/158391605-513528b9-41d7-46f6-9332-de05b802b293.JPG)
 
 
@@ -150,9 +169,11 @@ systemctl restart httpd.service
  
  1. Go to Amazone S3 dashboard
  2. Select the created S3 bucket
+ 
  ![image](https://user-images.githubusercontent.com/100774483/158427418-f34baab9-e57e-4043-b351-4a115937ee43.png)
  
- 3.Select permissions.
+ 3.Select permissions
+ 
  4. Go to bucket policy and click on "edit".
  
  ![image](https://user-images.githubusercontent.com/100774483/158427690-07266872-e21a-46d8-aa42-4dd1dd04e0a4.png)
