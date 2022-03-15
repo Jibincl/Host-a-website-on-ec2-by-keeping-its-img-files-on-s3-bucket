@@ -195,6 +195,8 @@ systemctl restart httpd.service
 }
 ~~~
 
+This policy is used to use the objects under the S3 bucket publically. 
+
 ![image](https://user-images.githubusercontent.com/100774483/158427978-b02583e8-f876-4ffb-b325-d32b8edb49f3.png)
 
 6.Click "Save changes"
