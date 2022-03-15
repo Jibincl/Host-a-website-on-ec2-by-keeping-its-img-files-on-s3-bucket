@@ -34,8 +34,12 @@ Now, let’s get into it!
 
 ## Step 2 : Install httpd, PHP and insert files to document root
 1. install httpd and php 
-  * yum install httpd -y
-  * amazone-linux-extras install php7.4 -y
+
+   ~~~
+   yum install httpd -y
+   amazone-linux-extras install php7.4 -y
+   ~~~
+   
 2. Upload website files to default document root "/var/www/html"  
 
 ## Step 3 : Create S3 bucket
