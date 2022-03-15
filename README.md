@@ -1,4 +1,4 @@
-# Host-a-website-on-ec2-by-keeping-its-img-files-on-s3-bucket
+# Host-a-website-on-ec2-by-keeping-it's-img-files-on-s3-bucket
 ## Description
 Hi guys,
 Here, im going to mention that how to host a static website on amazone ec2 instance by keeping it's image files on an s3 bucket.
@@ -10,7 +10,7 @@ We can use amazone s3 service to store our backup files. It provides unlimited s
 4. Create IAM policy to use the S3 bucket
 5. Create an IAM user and attach the policy
 6. Configure the IAM user and copy the IMG files to S3.
-7. Add rewrire rules on configuration file of apache.
+7. Add rewrite rules on configuration file of apache.
 8. Add bucket policy to the S3 for enabling public Access.
 9. Allow public access
 
@@ -121,5 +121,61 @@ Please refer to the screenshot
 ![configuring IAM user and copyng image files](https://user-images.githubusercontent.com/100774483/158391605-513528b9-41d7-46f6-9332-de05b802b293.JPG)
 
 
+## Step 7 : Add rewrite rules on configuration file of apache.
 
+1. Edit configuration file of apache
+
+~~~
+vi /etc/httpd/conf/httpd.conf
+~~~
+
+2. Add the below rewrite rule
+
+~~~
+RewriteEngine On
+RewriteRule ^/img/(.*)$  https://s3.ap-south-1.amazonaws.com/webserver-jibin.online/$1 [L]
+~~~
+
+This will make the redirection to s3 bucket for images.
+
+3. Restart httpd
+
+~~~
+systemctl restart httpd.service
+~~~
+
+
+ ## Step 8 : Add bucket policy to the S3 for enabling public Access.
  
+ 
+ 1. Go to Amazone S3 dashboard
+ 2. Select the created S3 bucket
+ ![image](https://user-images.githubusercontent.com/100774483/158427418-f34baab9-e57e-4043-b351-4a115937ee43.png)
+ 
+ 3.Select permissions.
+ 4. Go to bucket policy and click on "edit".
+ 
+ ![image](https://user-images.githubusercontent.com/100774483/158427690-07266872-e21a-46d8-aa42-4dd1dd04e0a4.png)
+
+5. Change the current bucket policy with below.
+
+~~~
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "PublicReadGetObject",
+			"Effect": "Allow",
+			"Principal": "*",
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::webserver-jibin.online/*"
+		}
+	]
+}
+~~~
+
+![image](https://user-images.githubusercontent.com/100774483/158427978-b02583e8-f876-4ffb-b325-d32b8edb49f3.png)
+
+6.Click "Save changes"
+
+
